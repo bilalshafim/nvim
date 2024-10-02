@@ -7,7 +7,8 @@ local plugins = {
         "pyright",
         -- "ruff_lsp",
         "ruff",
-        "mypy"
+        "mypy",
+        "typescript-langauge-server"
       },
     },
   },
