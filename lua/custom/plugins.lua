@@ -50,6 +50,12 @@ local plugins = {
     build = function()
       vim.cmd.GoInstallDeps()
     end
+  },
+  {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
   }
 }
 return plugins
