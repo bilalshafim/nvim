@@ -20,15 +20,34 @@ lspconfig.gopls.setup {
     },
   },
 }
-lspconfig.ruff_lsp.setup {
-  on_attach = on_attach,
-  init_options = {
-    settings = {
-      args = {}
-    }
-  }
-}
+-- lspconfig.ruff_lsp.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = {"python"},
+--   init_options = {
+--     settings = {
+--       args = {}
+--     }
+--   }
+-- }
+-- lspconfig.pyright.setup {
+--   settings = {
+--     pyright = {
+--       disableOrganizeImports = true,
+--     },
+--     python = {
+--       analysis = {
+--         ignore = { '*' },
+--       },
+--     },
+--   },
+-- }
+--
+--
 lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"python"},
   settings = {
     pyright = {
       disableOrganizeImports = true,
