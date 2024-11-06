@@ -3,13 +3,53 @@ local M = {}
 
 M.ui = {
   theme = 'rosepine',
-  transparency = true,
+  theme_toggle = { "rosepine", "blossom_light" },
+  transparency = false,
   hl_override = {
     Visual = { bg = "sun", fg = "#26233a"},
+    Comment = { fg = '#b4637a'},
+    ["@comment"] = { link = "Comment" },  -- Link treesitter comment to regular comment
+
+    -- File explorer (assuming you're using NvimTree)
+    -- NvimTreeNormal = { bg = "surface", fg = "text" },
+    -- NvimTreeFolderName = { fg = "foam" },
+    -- NvimTreeFolderIcon = { fg = "pine" },
+    -- NvimTreeOpenedFolderName = { fg = "iris" },
+    -- NvimTreeEmptyFolderName = { fg = "subtle" },
+    -- NvimTreeIndentMarker = { fg = "muted" },
+    -- NvimTreeSymlink = { fg = "rose" },
+    -- NvimTreeRootFolder = { fg = "love", bold = true },
+    --
+    -- Status line
+    -- StatusLine = { bg = "surface", fg = "subtle" },
+    -- StatusLineNC = { bg = "surface", fg = "muted" },
+
+    -- Tabs
+    -- TabLine = { bg = "surface", fg = "muted" },
+    -- TabLineFill = { bg = "surface" },
+    -- TabLineSel = { bg = "rose", fg = "base" },
+
+    -- Popup menu
+    -- Pmenu = { bg = "overlay", fg = "text" },
+    -- PmenuSel = { bg = "rose", fg = "base" },
+    -- PmenuSbar = { bg = "surface" },
+    -- PmenuThumb = { bg = "highlight_med" },
+
+    -- Line numbers
+    -- LineNr = { fg = "muted" },
+    CursorLineNr = { fg = "pink" },
+
+    -- Cursor line
+    -- CursorLine = { bg = "highlight_low" },
+
+    -- Search
+    -- Search = { bg = "gold", fg = "base" },
+    -- IncSearch = { bg = "love", fg = "base" },
   }
 }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
+
 
 return M
 

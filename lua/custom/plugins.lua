@@ -53,10 +53,31 @@ local plugins = {
     end
   },
   {
-    "supermaven-inc/supermaven-nvim",
+    "folke/trouble.nvim",
     config = function()
-      require("supermaven-nvim").setup({})
+        require("trouble").setup {
+            icons = false,
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    end
+  },
+  {
+    "rose-pine/neovim",
+    as = "dawn",
+    config = function()
+      require("rose-pine").setup({
+        variant = "dawn",  -- Set default variant here if needed
+      })
+      vim.cmd("colorscheme dawn")  -- Set colorscheme on startup
     end,
-  }
+  },
+  -- {
+  --   "supermaven-inc/supermaven-nvim",
+  --   config = function()
+  --     require("supermaven-nvim").setup({})
+  --   end,
+  -- },
 }
 return plugins

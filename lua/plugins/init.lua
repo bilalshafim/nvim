@@ -241,6 +241,14 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      plugins = {
+        tmux = { enabled = false }
+      },
+    },
+  },
 }
 
 local config = require("core.utils").load_config()
