@@ -1,5 +1,7 @@
 local M = {}
 
+local custom_utils = require "custom.utils"
+
 M.options = {
   nvchad_branch = "v2.0",
 }
@@ -31,10 +33,10 @@ M.ui = {
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
-    theme = "default", -- default/vscode/vscode_colored/minimal
+    theme = "vscode", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "default",
+    separator_style = "block",
     overriden_modules = nil,
   },
 
@@ -49,6 +51,8 @@ M.ui = {
   -- nvdash (dashboard)
   nvdash = {
     load_on_startup = true,
+
+    -- header = custom_utils.get_dashboard_header(),
 
     header = {
 "⣿⣿⣿⣿⣿⡿⡛⠕⡡⣪⡞⡟⡏⣿⢻⣻⣿⣟⣷⠙⣩⢫⢵⣫⡝⣻⣖⣭⣪⣵⣻⡿⠟⠻⢷⣻⢿⡿⣿⣿⣿⡾⡽⣾⣏⣼⣯⣷⠒⠸",
@@ -88,7 +92,7 @@ M.ui = {
     },
   },
 
-  cheatsheet = { theme = "grid" }, -- simple/grid
+  cheatsheet = { theme = "simple" }, -- simple/grid
 
   lsp = {
     -- show function signatures i.e args as you type
