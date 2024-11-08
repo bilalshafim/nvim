@@ -54,4 +54,17 @@ M.gopher = {
   }
 }
 
+M.custom_mappings = {
+  plugin = false,
+  n = {
+    ["<leader>sw"] = {
+      function()
+        vim.cmd('let @/ = expand("<cword>")')
+        vim.cmd('/')
+      end,
+      "Search for word under cursor"
+    }
+  }
+}
+
 return M
