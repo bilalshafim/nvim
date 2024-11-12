@@ -3,7 +3,7 @@ local M = {}
 
 M.ui = {
   theme = 'rosepine',
-  theme_toggle = { "rosepine", "blossom_light" },
+  theme_toggle = { "gruvbox_light", "rosepine" },
   transparency = false,
   hl_override = {
     Visual = { bg = "sun", fg = "#26233a"},
