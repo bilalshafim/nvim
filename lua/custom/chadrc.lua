@@ -2,14 +2,17 @@
 local M = {}
 
 M.ui = {
-  theme = 'rosepine',
-  theme_toggle = { "gruvbox_light", "rosepine" },
+  theme = 'monochrome',
+  theme_toggle = { "monochrome", "rosepine" },
   transparency = false,
   hl_override = {
-    Visual = { bg = "sun", fg = "#26233a"},
-    Comment = { fg = '#b4637a'},
+    -- Custom overrides for rosepine; uncomment below to enable
+    -- Visual = { bg = "sun", fg = "#26233a"},
+    -- Comment = { fg = '#b4637a'},
+    -- CursorLineNr = { fg = "pink" },
     ["@comment"] = { link = "Comment" },  -- Link treesitter comment to regular comment
 
+    -- Unused overrides for reference or future use - DO NOT UNCOMMENT UNLESS ADDING NEW STYLE
     -- File explorer (assuming you're using NvimTree)
     -- NvimTreeNormal = { bg = "surface", fg = "text" },
     -- NvimTreeFolderName = { fg = "foam" },
@@ -37,7 +40,6 @@ M.ui = {
 
     -- Line numbers
     -- LineNr = { fg = "muted" },
-    CursorLineNr = { fg = "pink" },
 
     -- Cursor line
     -- CursorLine = { bg = "highlight_low" },
