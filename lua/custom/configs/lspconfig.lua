@@ -1,5 +1,4 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
+local on_attach = require("plugins.configs.lspconfig").on_attach local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
@@ -20,17 +19,20 @@ lspconfig.gopls.setup {
     },
   },
 }
--- lspconfig.ruff_lsp.setup {
+lspconfig.ruff_lsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"python"},
+  init_options = {
+    settings = {
+      args = {}
+    }
+  }
+}
+-- lspconfig.pyright.setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities,
 --   filetypes = {"python"},
---   init_options = {
---     settings = {
---       args = {}
---     }
---   }
--- }
--- lspconfig.pyright.setup {
 --   settings = {
 --     pyright = {
 --       disableOrganizeImports = true,
@@ -42,23 +44,6 @@ lspconfig.gopls.setup {
 --     },
 --   },
 -- }
---
---
-lspconfig.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"python"},
-  settings = {
-    pyright = {
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        ignore = { '*' },
-      },
-    },
-  },
-}
 
 lspconfig.ts_ls.setup {
   on_attach = on_attach,
