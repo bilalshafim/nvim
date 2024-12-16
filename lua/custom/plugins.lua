@@ -4,11 +4,12 @@ local plugins = {
     opts = {
       ensure_installed = {
         "gopls",
-        "pyright",
-        -- "ruff_lsp",
+        -- "pyright",
+        "ruff_lsp",
         "ruff",
-        "mypy",
-        "typescript-langauge-server"
+        -- "mypy",
+        "typescript-langauge-server",
+        "lua-language-server"
       },
     },
   },
