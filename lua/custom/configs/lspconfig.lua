@@ -19,31 +19,34 @@ lspconfig.gopls.setup {
     },
   },
 }
-lspconfig.ruff_lsp.setup {
+lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"python"},
-  init_options = {
-    settings = {
-      args = {}
-    }
-  }
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        ignore = { '*' },
+        enable = false,
+      },
+    },
+  },
 }
--- lspconfig.pyright.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = {"python"},
---   settings = {
---     pyright = {
---       disableOrganizeImports = true,
---     },
---     python = {
---       analysis = {
---         ignore = { '*' },
---       },
---     },
---   },
--- }
+
+lspconfig.ruff.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"ruff", "server"},
+  filetypes = {"python"},
+  settings = {
+    ruff = {
+      -- Additional Ruff settings can be configured here
+    },
+  },
+}
 
 lspconfig.ts_ls.setup {
   on_attach = on_attach,

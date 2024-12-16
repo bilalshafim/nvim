@@ -3,12 +3,9 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "gopls",
-        -- "pyright",
-        "ruff_lsp",
+        -- "gopls",
+        "pyright",
         "ruff",
-        -- "mypy",
-        "typescript-langauge-server",
         "lua-language-server"
       },
     },
