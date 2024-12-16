@@ -29,7 +29,7 @@ M.ui = {
     selected_item_bg = "colored", -- colored / simple
   },
 
-  telescope = { style = "borderless" }, -- borderless / bordered
+  telescope = { style = "bordered" }, -- borderless / bordered
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
@@ -83,21 +83,21 @@ M.ui = {
     },
 
     buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m a", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
+      { " Find File", "Spc f f", "Telescope find_files" },
+      { " Recent Files", "Spc f o", "Telescope oldfiles" },
+      { " Find Word", "Spc f w", "Telescope live_grep" },
+      { " Bookmarks", "Spc m a", "Telescope marks" },
+      { " Themes", "Spc t h", "Telescope themes" },
+      { " Mappings", "Spc c h", "NvCheatsheet" },
     },
   },
 
-  cheatsheet = { theme = "simple" }, -- simple/grid
+  cheatsheet = { theme = "grid" }, -- simple/grid
 
   lsp = {
     -- show function signatures i.e args as you type
     signature = {
-      disabled = false,
+      disabled = true,
       silent = true, -- silences 'no signature help available' message from appearing
     },
   },
