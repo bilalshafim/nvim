@@ -62,9 +62,51 @@ M.custom_mappings = {
         vim.cmd('let @/ = expand("<cword>")')
         vim.cmd('/')
       end,
-      "Search for word under cursor"
-    }
+      "Search for word under cursor and move to next occurrence"
+    },
+    ["<leader>ss"] = {
+      function()
+        vim.cmd('let @/ = expand("<cword>")')
+        vim.cmd('set hlsearch')
+      end,
+      "Search for word under cursor and highlight it"
+    },
+    ["<leader>p"] = {
+      function()
+        vim.cmd([["_dP]])
+      end,
+      "Abolish selection and paste last yanked text"
+    },
+    ["<leader>k"] = {
+      "<cmd>lnext<CR>zz",
+      "Go to next item in the location list and center the screen",
+    },
+    -- Maybe will try later to set NetRW map
+    -- ["<leader>n"] = {
+    --   ":belowright split | <cmd> Ex<CR>",
+    --   "Open netrw in a new split"
+    -- },
   }
+}
+
+M.conform = {
+  plugin = true,
+  -- n = {
+  --   ["<leader>fm"] = {
+  --     function()
+  --       require("conform").format({ async = true })
+  --     end,
+  --     "Format entire buffer",
+  --   },
+  -- },
+  v = {
+    ["<leader>f"] = {
+      function()
+        require("conform").format({ async = true, lsp_fallback = true })
+      end,
+      "Format visually selected text",
+    },
+  },
 }
 
 return M

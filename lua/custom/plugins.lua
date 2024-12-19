@@ -93,14 +93,36 @@ local plugins = {
       require('telescope').load_extension('fzf')
 
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
-      vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
+      -- vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
       vim.keymap.set("n", "<space>en", function()
         require('telescope.builtin').find_files {
           cwd = vim.fn.stdpath("config")
       }
       end)
+      vim.keymap.set("n", "<leader>fi", function()
+        require('telescope.builtin').grep_string()
+      end)
+      vim.keymap.set("n", "<leader>fl", function()
+        require('telescope.builtin').live_grep({ default_text = vim.fn.expand('<cword>') })
+      end)
     end
   },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "black" },
+        go = { "gofmt" },
+        -- Add more formatters as needed
+      },
+    },
+    ft = { "lua", "python", "go" }, -- Load only for relevant file types
+    config = function(_, opts)
+      require("conform").setup(opts)
+      require("core.utils").load_mappings("conform")
+    end,
+  }
   -- {
   --   "supermaven-inc/supermaven-nvim",
   --   config = function()
