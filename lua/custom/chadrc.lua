@@ -3,10 +3,10 @@ local M = {}
 
 M.ui = {
   theme = 'monochrome',
-  theme_toggle = { "monochrome", "rosepine" },
+  theme_toggle = { "monochrome", "monochrome" },
   transparency = false,
   hl_override = {
-    -- Custom overrides for rosepine; uncomment below to enable
+    -- Custom overrides for monochrome; uncomment below to enable
     -- Visual = { bg = "sun", fg = "#26233a"},
     -- Comment = { fg = '#b4637a'},
     -- CursorLineNr = { fg = "pink" },

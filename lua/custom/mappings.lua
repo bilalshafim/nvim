@@ -109,4 +109,20 @@ M.conform = {
   },
 }
 
+M.zenmode = {
+  plugin = true,
+  n = {
+    ["<leader>z"] = {
+      function()
+        require("zen-mode").toggle({
+          window = {
+            width = .85
+          }
+        })
+      end,
+      "Toggle Zen Mode",
+    },
+  },
+}
+
 return M
