@@ -1,54 +1,53 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach local capabilities = require("plugins.configs.lspconfig").capabilities
+-- lua/custom/configs/lspconfig.lua
+-- Modern nvim 0.11+ style (no require('lspconfig').setup)
 
-local lspconfig = require("lspconfig")
-local util = require "lspconfig/util"
+local base = require("plugins.configs.lspconfig") -- pulls on_attach/capabilities from NvChad core
+local on_attach = base.on_attach
+local capabilities = base.capabilities
 
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {"gopls"},
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      completeUnimported = true,
-      usePlaceholders = true,
-      analyses = {
-        unusedparams = true,
+-- Ensure mason-lspconfig is present
+local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not ok then
+  vim.notify("mason-lspconfig not installed", vim.log.levels.WARN)
+  return
+end
+
+-- LSP servers you want
+local servers = {
+  "gopls",
+  "pyright",
+  "ruff",
+  "ts_ls",
+  "kotlin_language_server",
+}
+
+-- Configure each server with the new API
+for _, server in ipairs(servers) do
+  local settings = nil
+
+  if server == "gopls" then
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = { unusedparams = true },
       },
-    },
-  },
-}
-lspconfig.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"python"},
-  settings = {
-    pyright = {
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        ignore = { '*' },
-        enable = false,
-      },
-    },
-  },
-}
+    }
+  elseif server == "pyright" then
+    settings = {
+      python = { analysis = { autoSearchPaths = true } },
+    }
+  end
 
-lspconfig.ruff.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {"ruff", "server"},
-  filetypes = {"python"},
-  settings = {
-    ruff = {
-      -- Additional Ruff settings can be configured here
-    },
-  },
-}
+  vim.lsp.config(server, {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = settings,
+  })
+end
 
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+-- Ask Mason to install them (optional but handy)
+mason_lspconfig.setup({
+  ensure_installed = servers,
+})
+

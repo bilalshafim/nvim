@@ -11,6 +11,11 @@ local plugins = {
     },
   },
   {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function() require("mason-lspconfig").setup() end,
+  },
+  {
     "mfussenegger/nvim-dap",
     init = function ()
       require("core.utils").load_mappings("dap")
@@ -33,11 +38,11 @@ local plugins = {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = {"go", "python"},
-    opts = function ()
-      return require "custom.configs.null-ls"
-    end,
+   "nvimtools/none-ls.nvim",
+   ft = { "go", "python" },
+   opts = function()
+     return require("custom.configs.null-ls")
+   end,
   },
   {
     "olexsmir/gopher.nvim",

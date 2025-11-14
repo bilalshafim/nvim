@@ -7,7 +7,7 @@ M.ui = {
   transparency = false,
   hl_override = {
     -- Custom overrides for monochrome; uncomment below to enable
-    -- Visual = { bg = "sun", fg = "#26233a"},
+   Visual = { bg = "grey", fg = nil },
     -- Comment = { fg = '#b4637a'},
     -- CursorLineNr = { fg = "pink" },
     ["@comment"] = { link = "Comment" },  -- Link treesitter comment to regular comment
@@ -16,7 +16,7 @@ M.ui = {
     -- File explorer (assuming you're using NvimTree)
     -- NvimTreeNormal = { bg = "surface", fg = "text" },
     -- NvimTreeFolderName = { fg = "foam" },
-    -- NvimTreeFolderIcon = { fg = "pine" },
+   NvimTreeFolderIcon = { fg = "white" },
     -- NvimTreeOpenedFolderName = { fg = "iris" },
     -- NvimTreeEmptyFolderName = { fg = "subtle" },
     -- NvimTreeIndentMarker = { fg = "muted" },
