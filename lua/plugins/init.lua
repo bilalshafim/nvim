@@ -78,24 +78,22 @@ local default_plugins = {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
-          -- Setup for nvim-treesitter-context
-      require("treesitter-context").setup({
-        enable = true,
-        max_lines = 5,
-        min_window_height = 0,
-        line_numbers = true,
-        multiline_threshold = 20,
-        trim_scope = 'outer',
-        mode = 'cursor',
-        separator = nil,
-        zindex = 20
-      })
     end,
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-context",
         config = function()
-          -- Configuration is done in the main treesitter config
+          require("treesitter-context").setup({
+            enable = true,
+            max_lines = 5,
+            min_window_height = 0,
+            line_numbers = true,
+            multiline_threshold = 20,
+            trim_scope = 'outer',
+            mode = 'cursor',
+            separator = nil,
+            zindex = 20
+          })
         end,
       },
     },

@@ -3,17 +3,33 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        -- "gopls",
-        "pyright",
-        "ruff",
-        "lua-language-server"
+        "gopls",
+        "lua-language-server",
+        "kotlin-language-server",
       },
     },
   },
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
-    config = function() require("mason-lspconfig").setup() end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "lua",
+        "vim",
+        "vimdoc",
+        "go",
+        "kotlin",
+        "python",
+      },
+      highlight = {
+        enable = true,
+        use_languagetree = true,
+      },
+      indent = { enable = true },
+    },
   },
   {
     "mfussenegger/nvim-dap",
@@ -60,9 +76,6 @@ local plugins = {
     config = function()
         require("trouble").setup {
             icons = false,
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
         }
     end
   },
@@ -71,9 +84,9 @@ local plugins = {
     as = "dawn",
     config = function()
       require("rose-pine").setup({
-        variant = "dawn",  -- Set default variant here if needed
+        variant = "dawn",
       })
-      vim.cmd("colorscheme dawn")  -- Set colorscheme on startup
+      vim.cmd("colorscheme dawn")
     end,
   },
   {
@@ -98,7 +111,6 @@ local plugins = {
       require('telescope').load_extension('fzf')
 
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
-      -- vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
       vim.keymap.set("n", "<space>en", function()
         require('telescope.builtin').find_files {
           cwd = vim.fn.stdpath("config")
@@ -119,20 +131,13 @@ local plugins = {
         lua = { "stylua" },
         python = { "black" },
         go = { "gofmt" },
-        -- Add more formatters as needed
       },
     },
-    ft = { "lua", "python", "go" }, -- Load only for relevant file types
+    ft = { "lua", "python", "go" },
     config = function(_, opts)
       require("conform").setup(opts)
       require("core.utils").load_mappings("conform")
     end,
   }
-  -- {
-  --   "supermaven-inc/supermaven-nvim",
-  --   config = function()
-  --     require("supermaven-nvim").setup({})
-  --   end,
-  -- },
 }
 return plugins
